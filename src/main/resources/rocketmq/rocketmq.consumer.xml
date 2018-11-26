@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       		http://www.springframework.org/schema/context
+       		http://www.springframework.org/schema/context/spring-context-4.3.xsd ">
+
+	<context:component-scan base-package="zjq.work" />
+    
+	<!-- 事件驱动模式，以集群消费者为例 -->
+	<bean id="clusterConsumer" class="zjq.work.consumer.ClusterConsumer" init-method="init">
+		<property name="nameAddrs" value="${rocketmq.namesrv.addr}" />
+		<property name="group" value="${rocketmq.group}" />
+		<property name="instanceName" value="${rocketmq.consumer.instanceName}" />
+		<property name="container">
+			<map>
+				<entry key="${rocketmq.topic.business}" value-ref="businessListener" />
+				<entry key="${rocketmq.topic.trade}" value-ref="tradeListener" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 具体的业务事件 -->
+	<bean id="businessListener" class="zjq.work.test.BusinessListener" />
+	<bean id="tradeListener" class="zjq.work.test.TradeListener" />
+</beans>
