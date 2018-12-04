@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,7 @@ public class DefaultConsumer {
 			consumer.setInstanceName(instanceName);
 		}
 		consumer.setMessageModel(messageModel);
+		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 		try {
 			for (Map.Entry<String, ConsumerListener> entry : container.entrySet()) {
 				String topic = entry.getKey();
