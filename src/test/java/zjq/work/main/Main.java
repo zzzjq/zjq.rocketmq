@@ -1,6 +1,5 @@
 package zjq.work.main;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -11,9 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  **/
 public class Main {
 	public static void main(String[] args) throws Exception{
-		ApplicationContext a = new ClassPathXmlApplicationContext(
+		ClassPathXmlApplicationContext a = new ClassPathXmlApplicationContext(
 				new String[] {"rocketmq/rocketmq.consumer.xml",
 						"rocketmq/rocketmq.producer.xml"});	
-		
+		a.start();
 	}
 }
