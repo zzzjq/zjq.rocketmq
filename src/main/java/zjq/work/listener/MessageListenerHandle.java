@@ -1,8 +1,10 @@
 package zjq.work.listener;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -35,18 +37,36 @@ public class MessageListenerHandle implements MessageListenerConcurrently {
 	public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
 		MessageExt message = msgs.get(0);
 		MessageConsumerListener listener = (MessageConsumerListener) container.get(message.getTopic());
-		e.submit(new Runnable() {
+
+		Future<Boolean> f = e.submit(new Callable<Boolean>() {
 
 			@Override
-			public void run() {
+			public Boolean call() throws Exception {
 				try {
-					listener.onMessage(message, context);
+					return listener.onMessage(message, context);
 				} catch (Exception e) {
 					logger.error("consumer message exception, msg:{}, error:{}", message, e);
+					return false;
 				}
 			}
 		});
-		return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+
+		// e.submit(() -> {
+		// try {
+		// listener.onMessage(message, context);
+		// } catch (Exception e) {
+		// logger.error("consumer message exception, msg:{}, error:{}", message, e);
+		// }
+		// });
+
+		try {
+			if (f.get()) {
+				return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+			}
+		} catch (Exception e) {
+			logger.error("get message status error, msg:{}, error:{}", message, e);
+		}
+		return ConsumeConcurrentlyStatus.RECONSUME_LATER;
 	}
 
 }
