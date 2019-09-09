@@ -13,10 +13,11 @@
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
 		<cglib.version>2.2.2</cglib.version>
-		<log4j.version>1.2.16</log4j.version>
-		<slf4j.version>1.6.0</slf4j.version>
-		<spring.version>4.3.9.RELEASE</spring.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<spring.version>4.3.25.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 	
@@ -27,9 +28,14 @@
             <version>${commons-lang.version}</version>
         </dependency>   
         <dependency>
+	    	<groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>${commons-lang3.version}</version>
+		</dependency>
+        <dependency>
 	        <groupId>com.alibaba</groupId>
 	        <artifactId>fastjson</artifactId>
-	        <version>1.2.31</version>
+	        <version>1.2.47</version>
 	    </dependency>
 	    <dependency>
 	        <groupId>cglib</groupId>
@@ -49,9 +55,9 @@
 	    </dependency>
 	    <!-- 日志结束 -->
 	    <!-- spring -->
-		<dependency>
+	    <dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aop</artifactId>
+		    <artifactId>spring-core</artifactId>
 		    <version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -71,17 +77,12 @@
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
-		    <version>${spring.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		    <version>${spring.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
 		    <version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -91,21 +92,25 @@
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-orm</artifactId>
+		    <artifactId>spring-webmvc</artifactId>
 		    <version>${spring.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
+		    <artifactId>spring-orm</artifactId>
 		    <version>${spring.version}</version>
-		    <scope>test</scope>
 		</dependency>
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>		
+        </dependency>	
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${spring.version}</version>
+		    <scope>test</scope>
+		</dependency>	
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
