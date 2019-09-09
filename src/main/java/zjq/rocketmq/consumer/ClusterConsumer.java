@@ -1,4 +1,4 @@
-package zjq.work.consumer;
+package zjq.rocketmq.consumer;
 
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 

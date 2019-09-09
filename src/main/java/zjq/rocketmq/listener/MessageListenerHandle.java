@@ -1,4 +1,4 @@
-package zjq.work.listener;
+package zjq.rocketmq.listener;
 
 import java.util.List;
 import java.util.concurrent.Callable;

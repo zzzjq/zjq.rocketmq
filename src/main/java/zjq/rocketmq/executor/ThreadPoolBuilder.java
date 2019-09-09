@@ -1,4 +1,4 @@
-package zjq.work.executor;
+package zjq.rocketmq.executor;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

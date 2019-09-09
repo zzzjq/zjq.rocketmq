@@ -1,4 +1,4 @@
-package zjq.work.consumer;
+package zjq.rocketmq.consumer;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,9 +12,9 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import zjq.work.executor.ThreadPoolBuilder;
-import zjq.work.listener.ConsumerListener;
-import zjq.work.listener.MessageListenerHandle;
+import zjq.rocketmq.executor.ThreadPoolBuilder;
+import zjq.rocketmq.listener.ConsumerListener;
+import zjq.rocketmq.listener.MessageListenerHandle;
 
 /**
  * mq消费者 维护事件容器，key=topic，value=实际消费消息事件者

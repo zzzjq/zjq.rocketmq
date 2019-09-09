@@ -5,7 +5,7 @@ import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import zjq.work.listener.MessageConsumerListener;
+import zjq.rocketmq.listener.MessageConsumerListener;
 
 /**
  * 实际消费消息事件者

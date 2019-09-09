@@ -1,4 +1,4 @@
-package zjq.work.listener;
+package zjq.rocketmq.listener;
 
 /**
  * 消费消息接口

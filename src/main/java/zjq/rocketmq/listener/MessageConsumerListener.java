@@ -1,4 +1,4 @@
-package zjq.work.listener;
+package zjq.rocketmq.listener;
 
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.common.message.MessageExt;
